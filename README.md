@@ -1,4 +1,23 @@
 # libultraship
+
+---
+
+## Fork: Nintendo Switch Support
+
+This fork adds **Nintendo Switch** platform support to libultraship, used by [sxunix/Shipwright](https://github.com/sxunix/Shipwright) (SoH 9.x Switch port).
+
+### Changes from upstream
+
+| File | Change |
+|------|--------|
+| `CMakeLists.txt` | Added `NintendoSwitch` platform detection |
+| `cmake/dependencies/switch.cmake` | New — ImGui dependencies for Switch (SDL2, OpenGL ES, Mesa) |
+| `src/fast/backends/gfx_opengl.cpp` | Skip `glewInit()` on Switch (uses Mesa native GL) |
+| `src/fast/backends/gfx_sdl2.cpp` | OpenGL ES 3.0 context + fullscreen for Switch |
+
+---
+
+# libultraship (upstream)
 libultraship (LUS) is a library meant to provide reimplementations of libultra (n64 sdk) functions that run on modern hardware.
 
 LUS uses an asset loading system where data is stored separately from the executable in an archive file ending in `.otr` or `.o2r`. `.otr` files are [`.mpq`](http://www.zezula.net/en/mpq/main.html) compatible files. `.o2r` files are `.zip` compatible files. This separation of data from executable follows modern design practices which are more mod friendly. All one needs to do is supply a patch `.otr` or `.o2r` and the system will automatically replace the data.
